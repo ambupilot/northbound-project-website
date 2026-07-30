@@ -17,7 +17,7 @@ export function LatestRelease() {
               src={latestRelease.cover}
               alt={latestRelease.coverAlt}
               fill
-              priority={false}
+              priority
               sizes="(max-width: 56rem) 88vw, (max-width: 80rem) 42vw, 34rem"
             />
           </figure>
@@ -27,7 +27,8 @@ export function LatestRelease() {
         <div className={styles.content}>
           <p className={styles.chapter}>Chapter two · Latest release</p>
           <p className={styles.releaseType}>
-            {latestRelease.releaseType} · <time dateTime={latestRelease.releaseDateIso}>{latestRelease.releaseDate}</time>
+            {latestRelease.releaseType} ·{" "}
+            <time dateTime={latestRelease.releaseDateIso}>{latestRelease.releaseDate}</time>
           </p>
           <h2 className={styles.title} id="latest-release-title">
             {latestRelease.title}
