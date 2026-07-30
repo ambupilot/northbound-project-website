@@ -1,5 +1,6 @@
 import { HomeHero } from "@/components/hero/HomeHero";
 import { FeaturedSongs } from "@/components/music/FeaturedSongs";
+import { HomeLyrics } from "@/components/music/HomeLyrics/HomeLyrics";
 import { LatestRelease } from "@/components/music/LatestRelease";
 import { HomeStory } from "@/components/story/HomeStory";
 
@@ -26,6 +27,7 @@ export default function HomePage() {
       <LatestRelease />
       <HomeStory />
       <FeaturedSongs />
+      <HomeLyrics />
     </>
   );
 }

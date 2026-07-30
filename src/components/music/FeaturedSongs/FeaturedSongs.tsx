@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { featuredSongs } from "@/content/songs";
 
 import styles from "./FeaturedSongs.module.scss";
@@ -34,8 +36,8 @@ export function FeaturedSongs() {
               </div>
 
               <div className={styles.actions} aria-label={`${song.title} links`}>
-                <a href={`#lyrics-${song.slug}`}>Read lyrics</a>
-                <a href="#streaming">Listen</a>
+                <Link href={`/songs/${song.slug}`}>Explore song</Link>
+                <Link href={`/lyrics/${song.slug}`}>Read lyrics</Link>
               </div>
             </li>
           ))}
