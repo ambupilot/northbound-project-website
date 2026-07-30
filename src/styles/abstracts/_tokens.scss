@@ -1,0 +1,59 @@
+:root {
+  /* Colour palette */
+  --color-canvas: #171713;
+  --color-surface: #23231e;
+  --color-surface-soft: #2b2a24;
+
+  --color-text: #f0ede5;
+  --color-text-muted: #b7b1a6;
+  --color-text-subtle: #8c877e;
+
+  --color-accent: #b88a57;
+  --color-accent-hover: #c99a66;
+
+  --color-border: rgb(240 237 229 / 16%);
+  --color-overlay: rgb(16 16 13 / 68%);
+
+  /* Typography */
+  --font-family-display: Georgia, "Times New Roman", serif;
+  --font-family-body: Arial, Helvetica, sans-serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.375rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: clamp(2.25rem, 6vw, 4.75rem);
+  --font-size-3xl: clamp(3rem, 9vw, 7.5rem);
+
+  --line-height-tight: 0.95;
+  --line-height-heading: 1.08;
+  --line-height-body: 1.65;
+
+  --letter-spacing-wide: 0.14em;
+  --letter-spacing-wider: 0.22em;
+
+  /* Spacing */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 7rem;
+  --space-5xl: 10rem;
+
+  /* Layout */
+  --content-width: 75rem;
+  --content-width-narrow: 46rem;
+  --content-padding: clamp(1.25rem, 4vw, 4rem);
+
+  /* Shape and motion */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --transition-fast: 140ms ease;
+  --transition-default: 220ms ease;
+}

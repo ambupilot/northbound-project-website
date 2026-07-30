@@ -17,9 +17,7 @@ export default function SectionTitle({
   align = "left",
   className,
 }: SectionTitleProps) {
-  const classNames = [styles.root, styles[align], className]
-    .filter(Boolean)
-    .join(" ");
+  const classNames = [styles.root, styles[align], className].filter(Boolean).join(" ");
 
   return (
     <header className={classNames}>

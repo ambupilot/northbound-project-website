@@ -1,9 +1,5 @@
 import Link from "next/link";
-import type {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  ReactNode,
-} from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 import styles from "./Button.module.scss";
 
@@ -33,9 +29,7 @@ export default function Button({
   variant = "primary",
   ...props
 }: ButtonProps) {
-  const classNames = [styles.button, styles[variant], className]
-    .filter(Boolean)
-    .join(" ");
+  const classNames = [styles.button, styles[variant], className].filter(Boolean).join(" ");
 
   if ("href" in props && props.href) {
     const { href, ...linkProps } = props;

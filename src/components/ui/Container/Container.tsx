@@ -19,9 +19,7 @@ export default function Container<T extends ElementType = "div">({
   ...props
 }: ContainerProps<T>) {
   const Component = as ?? "div";
-  const classNames = [styles.container, styles[width], className]
-    .filter(Boolean)
-    .join(" ");
+  const classNames = [styles.container, styles[width], className].filter(Boolean).join(" ");
 
   return (
     <Component className={classNames} {...props}>

@@ -22,12 +22,7 @@ export default function Section<T extends ElementType = "section">({
   ...props
 }: SectionProps<T>) {
   const Component = as ?? "section";
-  const classNames = [
-    styles.section,
-    styles[spacing],
-    styles[tone],
-    className,
-  ]
+  const classNames = [styles.section, styles[spacing], styles[tone], className]
     .filter(Boolean)
     .join(" ");
 
