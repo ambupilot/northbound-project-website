@@ -17,7 +17,7 @@ export function LatestRelease() {
               src={latestRelease.cover}
               alt={latestRelease.coverAlt}
               fill
-              priority
+              priority={false}
               sizes="(max-width: 56rem) 88vw, (max-width: 80rem) 42vw, 34rem"
             />
           </figure>
