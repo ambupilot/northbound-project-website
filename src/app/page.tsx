@@ -15,8 +15,8 @@ export default function HomePage() {
             Every song begins somewhere.
           </h2>
           <p className={styles.copy}>
-            Northbound Project follows the roads between memory and possibility — Americana,
-            roots and personal stories shaped by time, distance and hope.
+            Northbound Project follows the roads between memory and possibility — Americana, roots
+            and personal stories shaped by time, distance and hope.
           </p>
         </div>
       </section>
