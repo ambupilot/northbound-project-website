@@ -1,4 +1,5 @@
 import { HomeHero } from "@/components/hero/HomeHero";
+import { LatestRelease } from "@/components/music/LatestRelease";
 
 import styles from "./page.module.scss";
 
@@ -19,6 +20,8 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+
+      <LatestRelease />
     </>
   );
 }
