@@ -1,13 +1,24 @@
+import { HomeHero } from "@/components/hero/HomeHero";
+
+import styles from "./page.module.scss";
+
 export default function HomePage() {
   return (
-    <main>
-      <section className="section section--large">
-        <div className="container">
-          <p>Northbound Project</p>
-          <h1>Stories from the open road.</h1>
-          <p>Americana, roots and personal songs about time, distance, memory and hope.</p>
+    <>
+      <HomeHero />
+
+      <section className={styles.journey} id="journey" aria-labelledby="journey-title">
+        <div className={styles.journeyInner}>
+          <p className={styles.chapter}>Chapter one</p>
+          <h2 className={styles.heading} id="journey-title">
+            Every song begins somewhere.
+          </h2>
+          <p className={styles.copy}>
+            Northbound Project follows the roads between memory and possibility — Americana,
+            roots and personal stories shaped by time, distance and hope.
+          </p>
         </div>
       </section>
-    </main>
+    </>
   );
 }
