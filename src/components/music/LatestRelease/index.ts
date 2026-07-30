@@ -1,0 +1,1 @@
+export { LatestRelease } from "./LatestRelease";
