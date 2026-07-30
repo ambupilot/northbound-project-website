@@ -61,7 +61,7 @@ export default async function LyricsPage({ params }: LyricsPageProps) {
             <div><dt>Written by</dt><dd>{song.credits.writer}</dd></div>
             <div><dt>Produced by</dt><dd>{song.credits.producer}</dd></div>
           </dl>
-          <Link href="/#lyrics">Back to lyrics</Link>
+          <Link href="/lyrics">Back to all lyrics</Link>
         </footer>
       </article>
     </main>
