@@ -17,3 +17,16 @@ export const featuredSongs = songs
 export function getSongBySlug(slug: string) {
   return songs.find((song) => song.slug === slug);
 }
+
+export function getAdjacentSongs(slug: string) {
+  const currentIndex = songs.findIndex((song) => song.slug === slug);
+
+  if (currentIndex === -1) {
+    return { previous: undefined, next: undefined };
+  }
+
+  return {
+    previous: songs[currentIndex - 1],
+    next: songs[currentIndex + 1],
+  };
+}
