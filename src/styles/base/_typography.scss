@@ -1,0 +1,31 @@
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-family-display);
+  font-weight: 400;
+  line-height: var(--line-height-heading);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  letter-spacing: -0.045em;
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  letter-spacing: -0.035em;
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+p {
+  max-width: 68ch;
+}
+
+small {
+  font-size: var(--font-size-sm);
+}

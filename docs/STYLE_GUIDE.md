@@ -67,15 +67,15 @@ Decorative typography is reserved for prominent headings and short labels. Body 
 
 The initial palette is derived from the warm, desaturated tones of the debut artwork.
 
-| Token | Hex | Intended use |
-|---|---:|---|
-| `--color-ink` | `#1B1A17` | Primary dark background and dark text |
-| `--color-charcoal` | `#292722` | Secondary dark surfaces |
-| `--color-paper` | `#F1EBDD` | Primary light text and light backgrounds |
-| `--color-sand` | `#D3C5AC` | Muted surfaces, borders and secondary text |
-| `--color-stone` | `#8C867A` | Subdued text and metadata |
-| `--color-copper` | `#A87346` | Primary accent and selected states |
-| `--color-road` | `#5C5850` | Neutral structural accents |
+| Token              |       Hex | Intended use                               |
+| ------------------ | --------: | ------------------------------------------ |
+| `--color-ink`      | `#1B1A17` | Primary dark background and dark text      |
+| `--color-charcoal` | `#292722` | Secondary dark surfaces                    |
+| `--color-paper`    | `#F1EBDD` | Primary light text and light backgrounds   |
+| `--color-sand`     | `#D3C5AC` | Muted surfaces, borders and secondary text |
+| `--color-stone`    | `#8C867A` | Subdued text and metadata                  |
+| `--color-copper`   | `#A87346` | Primary accent and selected states         |
+| `--color-road`     | `#5C5850` | Neutral structural accents                 |
 
 ### Usage rules
 
@@ -133,14 +133,14 @@ Use for:
 
 Use fluid sizing with `clamp()` rather than many fixed breakpoints.
 
-| Role | Suggested range |
-|---|---|
-| Hero title | `clamp(3.5rem, 10vw, 8rem)` |
-| Page title | `clamp(2.75rem, 7vw, 5.5rem)` |
-| Section title | `clamp(2rem, 4vw, 3.5rem)` |
-| Lead text | `clamp(1.125rem, 2vw, 1.5rem)` |
-| Body text | `1rem` to `1.125rem` |
-| Small metadata | `0.75rem` to `0.875rem` |
+| Role           | Suggested range                |
+| -------------- | ------------------------------ |
+| Hero title     | `clamp(3.5rem, 10vw, 8rem)`    |
+| Page title     | `clamp(2.75rem, 7vw, 5.5rem)`  |
+| Section title  | `clamp(2rem, 4vw, 3.5rem)`     |
+| Lead text      | `clamp(1.125rem, 2vw, 1.5rem)` |
+| Body text      | `1rem` to `1.125rem`           |
+| Small metadata | `0.75rem` to `0.875rem`        |
 
 ## 6. Spacing and layout
 

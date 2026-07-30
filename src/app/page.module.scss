@@ -1,0 +1,35 @@
+.journey {
+  background: var(--color-canvas);
+  min-height: 42rem;
+  padding: var(--space-5xl) var(--content-padding);
+}
+
+.journeyInner {
+  margin: 0 auto;
+  max-width: var(--content-width);
+}
+
+.chapter {
+  color: var(--color-accent);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  margin: 0 0 var(--space-lg);
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-2xl);
+  font-weight: 400;
+  line-height: var(--line-height-heading);
+  margin: 0;
+  max-width: 13ch;
+}
+
+.copy {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-body);
+  margin: var(--space-xl) 0 0;
+  max-width: 38rem;
+}

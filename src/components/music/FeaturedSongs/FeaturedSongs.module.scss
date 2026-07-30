@@ -1,0 +1,234 @@
+.section {
+  background: var(--color-surface);
+  padding: clamp(7rem, 11vw, 11rem) var(--content-padding);
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: var(--content-width);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.chapter {
+  color: var(--color-accent);
+  font-size: var(--font-size-xs);
+  grid-column: 1 / -1;
+  letter-spacing: var(--letter-spacing-wider);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.94;
+  margin: 0;
+  max-width: 10ch;
+}
+
+.introduction {
+  align-self: end;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: var(--line-height-body);
+  margin: 0;
+  max-width: 35rem;
+}
+
+.songList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.song {
+  align-items: start;
+  border-top: 1px solid var(--color-border);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  padding: clamp(2.2rem, 5vw, 4rem) 0;
+  position: relative;
+}
+
+.song:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.song::after {
+  background: var(--color-accent);
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  top: -1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms ease;
+  width: 100%;
+}
+
+.song:hover::after,
+.song:focus-within::after {
+  transform: scaleX(1);
+}
+
+.featuredNumber {
+  color: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 1.15rem;
+  transition: transform 400ms ease;
+}
+
+.song:hover .featuredNumber,
+.song:focus-within .featuredNumber {
+  transform: translateX(0.35rem);
+}
+
+.songContent {
+  max-width: 52rem;
+}
+
+.songHeading {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-xl);
+}
+
+.songHeading h3 {
+  font-family: var(--font-family-display);
+  font-size: clamp(2.25rem, 5vw, 4.75rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+  transition: color 300ms ease;
+}
+
+.song:hover .songHeading h3,
+.song:focus-within .songHeading h3 {
+  color: var(--color-accent);
+}
+
+.songHeading span {
+  color: var(--color-text-subtle);
+  font-size: 0.65rem;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.description {
+  color: var(--color-text-muted);
+  line-height: var(--line-height-body);
+  margin: var(--space-lg) 0 0;
+  max-width: 42rem;
+}
+
+.excerpt {
+  font-family: var(--font-family-display);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-style: italic;
+  line-height: 1.4;
+  margin: var(--space-lg) 0 0;
+}
+
+.actions {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding-top: 0.4rem;
+}
+
+.actions a {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-spacing-wide);
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 250ms ease;
+  white-space: nowrap;
+}
+
+.actions a::after {
+  background: currentColor;
+  bottom: -0.35rem;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
+  width: 100%;
+}
+
+.actions a:hover,
+.actions a:focus-visible {
+  color: var(--color-text);
+}
+
+.actions a:hover::after,
+.actions a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 56rem) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .song {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .actions {
+    align-items: center;
+    flex-direction: row;
+    grid-column: 2;
+    margin-top: var(--space-md);
+  }
+}
+
+@media (max-width: 36rem) {
+  .title {
+    font-size: clamp(3rem, 15vw, 4.5rem);
+  }
+
+  .song {
+    gap: var(--space-lg);
+    grid-template-columns: 1fr;
+  }
+
+  .featuredNumber,
+  .actions {
+    grid-column: 1;
+  }
+
+  .actions {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .song::after,
+  .featuredNumber,
+  .songHeading h3,
+  .actions a,
+  .actions a::after {
+    transition: none;
+  }
+}

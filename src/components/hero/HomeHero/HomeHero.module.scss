@@ -1,0 +1,225 @@
+.hero {
+  align-items: center;
+  display: flex;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: 8rem var(--content-padding) 6rem;
+  position: relative;
+}
+
+.backdrop {
+  animation: hero-breathe 24s ease-in-out infinite alternate;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(12 12 10 / 20%) 0%,
+      rgb(12 12 10 / 18%) 40%,
+      rgb(12 12 10 / 82%) 100%
+    ),
+    radial-gradient(circle at 72% 22%, rgb(184 138 87 / 32%), transparent 28%),
+    radial-gradient(circle at 24% 48%, rgb(83 91 75 / 36%), transparent 36%),
+    linear-gradient(135deg, #4b4a3e 0%, #2d302a 38%, #181814 100%);
+  inset: -6%;
+  position: absolute;
+  transform: scale(1.04);
+  will-change: transform;
+}
+
+.backdrop::before,
+.backdrop::after {
+  content: "";
+  position: absolute;
+}
+
+.backdrop::before {
+  background: linear-gradient(
+    165deg,
+    transparent 0 42%,
+    rgb(13 13 11 / 72%) 43% 58%,
+    transparent 59%
+  );
+  inset: 12% -8% -20%;
+  opacity: 0.72;
+  transform: rotate(-4deg);
+}
+
+.backdrop::after {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(17 17 14 / 12%) 48%,
+    rgb(14 14 12 / 88%) 100%
+  );
+  inset: 0;
+}
+
+.vignette {
+  background:
+    linear-gradient(90deg, rgb(10 10 8 / 72%) 0%, transparent 55%),
+    radial-gradient(circle at center, transparent 42%, rgb(8 8 7 / 48%) 100%);
+  inset: 0;
+  position: absolute;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: var(--content-width);
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.eyebrow,
+.title,
+.tagline,
+.actions,
+.scrollCue {
+  animation: reveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  opacity: 0;
+}
+
+.eyebrow {
+  animation-delay: 700ms;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  margin: 0 0 var(--space-xl);
+  text-transform: uppercase;
+}
+
+.title {
+  animation-delay: 1.6s;
+  font-family: var(--font-family-display);
+  font-size: clamp(4rem, 12vw, 10.5rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.77;
+  margin: 0;
+  max-width: 9ch;
+  text-wrap: balance;
+}
+
+.title span {
+  display: block;
+}
+
+.title span:last-child {
+  color: var(--color-accent);
+  font-style: italic;
+  margin-left: 0.42em;
+}
+
+.tagline {
+  animation-delay: 2.8s;
+  color: var(--color-text-muted);
+  font-family: var(--font-family-display);
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-style: italic;
+  margin: var(--space-2xl) 0 0;
+}
+
+.actions {
+  align-items: center;
+  animation-delay: 4.2s;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-top: calc(var(--space-3xl) + 1.5rem);
+}
+
+.scrollCue {
+  align-items: center;
+  animation-delay: 4.9s;
+  bottom: 1.5rem;
+  color: var(--color-text-subtle);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.65rem;
+  gap: var(--space-sm);
+  left: 50%;
+  letter-spacing: var(--letter-spacing-wide);
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.scrollLine {
+  background: var(--color-text-subtle);
+  display: block;
+  height: 2.5rem;
+  opacity: 0.72;
+  width: 1px;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-breathe {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale(1.16) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+@media (max-width: 48rem) {
+  .hero {
+    align-items: flex-end;
+    padding-bottom: 10.5rem;
+  }
+
+  .backdrop {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(12 12 10 / 14%) 0%,
+        rgb(12 12 10 / 36%) 45%,
+        rgb(12 12 10 / 94%) 100%
+      ),
+      radial-gradient(circle at 65% 22%, rgb(184 138 87 / 28%), transparent 32%),
+      linear-gradient(145deg, #4b4a3e 0%, #2d302a 45%, #181814 100%);
+  }
+
+  .title {
+    font-size: clamp(3.8rem, 20vw, 6.5rem);
+  }
+
+  .title span:last-child {
+    margin-left: 0.16em;
+  }
+
+  .tagline {
+    max-width: 16rem;
+  }
+
+  .actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .eyebrow,
+  .title,
+  .tagline,
+  .actions,
+  .scrollCue {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
