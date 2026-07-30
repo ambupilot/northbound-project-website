@@ -1,0 +1,34 @@
+.section {
+  position: relative;
+}
+
+.compact {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+.default {
+  padding-block: clamp(4.5rem, 9vw, 7rem);
+}
+
+.large {
+  padding-block: clamp(7rem, 12vw, 10rem);
+}
+
+.transparent {
+  background: transparent;
+}
+
+.dark {
+  color: var(--color-paper, #f1ebdd);
+  background: var(--color-ink, #1b1a17);
+}
+
+.light {
+  color: var(--color-ink, #1b1a17);
+  background: var(--color-paper, #f1ebdd);
+}
+
+.muted {
+  color: var(--color-paper, #f1ebdd);
+  background: var(--color-charcoal, #292722);
+}
