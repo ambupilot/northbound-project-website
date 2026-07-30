@@ -59,12 +59,12 @@
 .tagline,
 .actions,
 .scrollCue {
-  animation: reveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: reveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   opacity: 0;
 }
 
 .eyebrow {
-  animation-delay: 500ms;
+  animation-delay: 700ms;
   color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-wider);
@@ -73,7 +73,7 @@
 }
 
 .title {
-  animation-delay: 900ms;
+  animation-delay: 1.6s;
   font-family: var(--font-family-display);
   font-size: clamp(4rem, 12vw, 10.5rem);
   font-weight: 400;
@@ -95,7 +95,7 @@
 }
 
 .tagline {
-  animation-delay: 1.4s;
+  animation-delay: 2.8s;
   color: var(--color-text-muted);
   font-family: var(--font-family-display);
   font-size: clamp(1.25rem, 2.5vw, 2rem);
@@ -105,16 +105,16 @@
 
 .actions {
   align-items: center;
-  animation-delay: 1.9s;
+  animation-delay: 4.2s;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-lg);
-  margin-top: var(--space-3xl);
+  margin-top: calc(var(--space-3xl) + 1.5rem);
 }
 
 .scrollCue {
   align-items: center;
-  animation-delay: 2.4s;
+  animation-delay: 4.9s;
   bottom: 1.5rem;
   color: var(--color-text-subtle);
   display: flex;
