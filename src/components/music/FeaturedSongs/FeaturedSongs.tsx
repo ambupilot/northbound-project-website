@@ -36,8 +36,8 @@ export function FeaturedSongs() {
               </div>
 
               <div className={styles.actions} aria-label={`${song.title} links`}>
+                <Link href={`/songs/${song.slug}`}>Explore song</Link>
                 <Link href={`/lyrics/${song.slug}`}>Read lyrics</Link>
-                <a href="#streaming">Listen</a>
               </div>
             </li>
           ))}
