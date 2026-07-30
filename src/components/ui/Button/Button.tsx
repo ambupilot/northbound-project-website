@@ -1,5 +1,9 @@
 import Link from "next/link";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode,
+} from "react";
 
 import styles from "./Button.module.scss";
 
@@ -43,8 +47,10 @@ export default function Button({
     );
   }
 
+  const { type = "button", ...buttonProps } = props as NativeButtonProps;
+
   return (
-    <button className={classNames} type="button" {...props}>
+    <button className={classNames} type={type} {...buttonProps}>
       {children}
     </button>
   );
