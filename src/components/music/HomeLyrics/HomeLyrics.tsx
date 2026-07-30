@@ -31,6 +31,10 @@ export function HomeLyrics() {
             </li>
           ))}
         </ol>
+
+        <div className={styles.collectionLink}>
+          <Link href="/lyrics">Explore all lyrics</Link>
+        </div>
       </div>
     </section>
   );
