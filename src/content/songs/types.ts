@@ -4,6 +4,11 @@ export type SongCredits = {
   producer: string;
 };
 
+export type SongStreamingLink = {
+  name: string;
+  href: string | null;
+};
+
 export type Song = {
   albumTrack: number;
   title: string;
@@ -11,7 +16,11 @@ export type Song = {
   year: number;
   description: string;
   lyricExcerpt: string;
+  story: string[];
+  themes: string[];
+  mood: string;
   featuredOrder?: number;
   lyrics: string[];
   credits: SongCredits;
+  streamingLinks: SongStreamingLink[];
 };
