@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -13,6 +13,13 @@ export const metadata: Metadata = {
   },
   description:
     "The official website of Northbound Project — Americana, roots and personal stories from the open road.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
 };
 
 type RootLayoutProps = Readonly<{
