@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import { primaryNavigation } from "@/content/navigation";
 
 import styles from "./Navigation.module.scss";
@@ -12,7 +14,10 @@ export default function Navigation({ mobile = false, onNavigate }: NavigationPro
     <nav aria-label="Primary navigation">
       <ul className={mobile ? styles.mobileList : styles.list}>
         {primaryNavigation.map((item, index) => (
-          <li key={item.href} style={mobile ? { "--menu-index": index } as React.CSSProperties : undefined}>
+          <li
+            key={item.href}
+            style={mobile ? ({ "--menu-index": index } as CSSProperties) : undefined}
+          >
             <a className={styles.link} href={item.href} onClick={onNavigate}>
               {mobile && (
                 <span className={styles.mobileNumber} aria-hidden="true">
