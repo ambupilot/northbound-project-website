@@ -20,12 +20,34 @@ export default function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("resize", handleResize);
+
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("resize", handleResize);
     };
   }, [isOpen]);
 
-  const headerClassName = [styles.header, isScrolled ? styles.scrolled : ""]
+  const headerClassName = [
+    styles.header,
+    isScrolled ? styles.scrolled : "",
+    isOpen ? styles.menuOpen : "",
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -56,7 +78,14 @@ export default function SiteHeader() {
           .join(" ")}
         aria-hidden={!isOpen}
       >
-        <Navigation mobile onNavigate={() => setIsOpen(false)} />
+        <div className={styles.mobileMenuInner}>
+          <p className={styles.mobileEyebrow}>Northbound Project</p>
+          <Navigation mobile onNavigate={() => setIsOpen(false)} />
+          <div className={styles.mobileFooter}>
+            <span>Americana · Roots · Stories from the road</span>
+            <span>Open Road Records</span>
+          </div>
+        </div>
       </div>
     </header>
   );
