@@ -51,31 +51,38 @@ export default function SiteHeader() {
     .filter(Boolean)
     .join(" ");
 
+  const menuClassName = [
+    styles.mobileMenu,
+    isOpen ? styles.mobileMenuOpen : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <header className={headerClassName}>
-      <div className={styles.inner}>
-        <Logo />
-        <div className={styles.desktopNavigation}>
-          <Navigation />
+    <>
+      <header className={headerClassName}>
+        <div className={styles.inner}>
+          <Logo />
+          <div className={styles.desktopNavigation}>
+            <Navigation />
+          </div>
+          <button
+            className={styles.menuButton}
+            type="button"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            onClick={() => setIsOpen((current) => !current)}
+          >
+            <span />
+            <span />
+          </button>
         </div>
-        <button
-          className={styles.menuButton}
-          type="button"
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          onClick={() => setIsOpen((current) => !current)}
-        >
-          <span />
-          <span />
-        </button>
-      </div>
+      </header>
 
       <div
         id="mobile-menu"
-        className={[styles.mobileMenu, isOpen ? styles.mobileMenuOpen : ""]
-          .filter(Boolean)
-          .join(" ")}
+        className={menuClassName}
         aria-hidden={!isOpen}
       >
         <div className={styles.mobileMenuInner}>
@@ -87,6 +94,6 @@ export default function SiteHeader() {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }
