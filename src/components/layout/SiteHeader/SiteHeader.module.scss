@@ -172,12 +172,28 @@
 }
 
 @media (max-width: 48rem) {
+  .header {
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    background: rgb(23 23 19 / 88%);
+    box-shadow: 0 1px 0 rgb(240 237 229 / 10%);
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .inner {
+    min-height: 4.5rem;
+  }
+
   .desktopNavigation {
     display: none;
   }
 
   .menuButton {
     display: flex;
+  }
+
+  .mobileMenu {
+    padding-top: calc(5.75rem + env(safe-area-inset-top));
   }
 }
 
