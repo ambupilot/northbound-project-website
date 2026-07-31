@@ -11,10 +11,15 @@ export default function Navigation({ mobile = false, onNavigate }: NavigationPro
   return (
     <nav aria-label="Primary navigation">
       <ul className={mobile ? styles.mobileList : styles.list}>
-        {primaryNavigation.map((item) => (
-          <li key={item.href}>
+        {primaryNavigation.map((item, index) => (
+          <li key={item.href} style={mobile ? { "--menu-index": index } as React.CSSProperties : undefined}>
             <a className={styles.link} href={item.href} onClick={onNavigate}>
-              {item.label}
+              {mobile && (
+                <span className={styles.mobileNumber} aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              )}
+              <span>{item.label}</span>
             </a>
           </li>
         ))}
