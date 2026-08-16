@@ -12,6 +12,8 @@ import { whereTheRiverSlows } from "./where-the-river-slows";
 
 export type { Song } from "./types";
 
+const albumWriter = "Martijn Kerssing";
+
 export const songs: Song[] = [
   firstLight,
   homebound,
@@ -23,7 +25,15 @@ export const songs: Song[] = [
   ifTimeHadWaited,
   northernLights,
   whereTheRiverSlows,
-].sort((a, b) => a.albumTrack - b.albumTrack);
+]
+  .map((song) => ({
+    ...song,
+    credits: {
+      ...song.credits,
+      writer: albumWriter,
+    },
+  }))
+  .sort((a, b) => a.albumTrack - b.albumTrack);
 
 export const featuredSongs = songs
   .filter((song) => song.featuredOrder !== undefined)
