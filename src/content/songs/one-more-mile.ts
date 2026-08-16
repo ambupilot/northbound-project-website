@@ -72,8 +72,8 @@ Exactly as we came`,
   ],
   credits: {
     artist: "Northbound Project",
-    writer: "Northbound Project",
-    producer: "Northbound Project",
+    writer: "Martijn Kerssing",
+    producer: "Northbound Project, Open Road Records",
   },
   streamingLinks: [],
 };
