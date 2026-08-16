@@ -47,7 +47,18 @@ export default async function LyricsPage({ params }: LyricsPageProps) {
         <section className={styles.lyrics} aria-labelledby="full-lyrics-title">
           <h2 id="full-lyrics-title">Lyrics</h2>
           {song.lyrics.length > 0 ? (
-            song.lyrics.map((verse, index) => <p key={`${song.slug}-${index}`}>{verse}</p>)
+            <div className={styles.lyricSections}>
+              {song.lyrics.map((section, index) => {
+                const [label, ...lines] = section.split("\n");
+
+                return (
+                  <section className={styles.lyricSection} key={`${song.slug}-${index}`}>
+                    <h3>{label}</h3>
+                    <p>{lines.join("\n")}</p>
+                  </section>
+                );
+              })}
+            </div>
           ) : (
             <p className={styles.pending}>
               The complete lyrics will be published here with the official release.
