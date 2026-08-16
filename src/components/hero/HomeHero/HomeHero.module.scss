@@ -1,5 +1,6 @@
 .hero {
   align-items: center;
+  background: #0d1011;
   display: flex;
   min-height: 100svh;
   overflow: hidden;
@@ -8,57 +9,85 @@
 }
 
 .backdrop {
-  animation: hero-breathe 24s ease-in-out infinite alternate;
+  animation: hero-breathe 26s ease-in-out infinite alternate;
   background:
-    linear-gradient(
-      180deg,
-      rgb(12 12 10 / 20%) 0%,
-      rgb(12 12 10 / 18%) 40%,
-      rgb(12 12 10 / 82%) 100%
-    ),
-    radial-gradient(circle at 72% 22%, rgb(184 138 87 / 32%), transparent 28%),
-    radial-gradient(circle at 24% 48%, rgb(83 91 75 / 36%), transparent 36%),
-    linear-gradient(135deg, #4b4a3e 0%, #2d302a 38%, #181814 100%);
-  inset: -6%;
+    radial-gradient(circle at 50% 54%, rgb(184 138 87 / 20%), transparent 25%),
+    linear-gradient(180deg, #0a0e10 0%, #111719 52%, #18140f 100%);
+  inset: -4%;
   position: absolute;
-  transform: scale(1.04);
+  transform: scale(1.03);
   will-change: transform;
 }
 
 .backdrop::before,
 .backdrop::after {
   content: "";
+  pointer-events: none;
   position: absolute;
 }
 
 .backdrop::before {
-  background: linear-gradient(
-    165deg,
-    transparent 0 42%,
-    rgb(13 13 11 / 72%) 43% 58%,
-    transparent 59%
-  );
-  inset: 12% -8% -20%;
-  opacity: 0.72;
-  transform: rotate(-4deg);
+  background-image: url("/images/hero/northbound-hero-cinematic.webp");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  height: 48%;
+  left: 0;
+  opacity: 0.96;
+  right: 0;
 }
 
 .backdrop::after {
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgb(17 17 14 / 12%) 48%,
-    rgb(14 14 12 / 88%) 100%
-  );
+  background:
+    linear-gradient(180deg, #0d1112 0%, rgb(13 17 18 / 92%) 20%, transparent 58%),
+    linear-gradient(90deg, rgb(6 8 8 / 40%) 0%, transparent 32%, transparent 68%, rgb(6 8 8 / 35%) 100%);
   inset: 0;
 }
 
 .vignette {
   background:
-    linear-gradient(90deg, rgb(10 10 8 / 72%) 0%, transparent 55%),
-    radial-gradient(circle at center, transparent 42%, rgb(8 8 7 / 48%) 100%);
+    radial-gradient(circle at 50% 48%, transparent 34%, rgb(5 7 7 / 42%) 100%),
+    linear-gradient(180deg, rgb(5 7 8 / 12%) 0%, transparent 55%, rgb(5 6 6 / 26%) 100%);
   inset: 0;
+  pointer-events: none;
   position: absolute;
+}
+
+.coordinates {
+  animation: reveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) 1.2s both;
+  color: var(--color-accent);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6rem;
+  gap: 0.35rem;
+  left: var(--content-padding);
+  letter-spacing: 0.18em;
+  line-height: 1.35;
+  opacity: 0;
+  position: absolute;
+  text-transform: uppercase;
+  top: clamp(8rem, 13vh, 10rem);
+  z-index: 2;
+}
+
+.north {
+  font-size: 0.72rem;
+  margin-bottom: 0.15rem;
+}
+
+.compassLine {
+  background: currentColor;
+  height: 2rem;
+  margin-left: 0.22rem;
+  opacity: 0.8;
+  width: 1px;
+}
+
+.compassStar {
+  font-size: 0.8rem;
+  line-height: 1;
+  margin: -0.1rem 0 0 -0.16rem;
 }
 
 .content {
@@ -80,7 +109,7 @@
 
 .eyebrow {
   animation-delay: 700ms;
-  color: var(--color-text-muted);
+  color: var(--color-accent);
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-wider);
   margin: 0 0 var(--space-xl);
@@ -101,6 +130,10 @@
 
 .title span {
   display: block;
+}
+
+.title span:first-child {
+  text-shadow: 0 0.08em 0.6em rgb(0 0 0 / 25%);
 }
 
 .title span:last-child {
@@ -142,7 +175,7 @@
   text-decoration: none;
   text-transform: uppercase;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 2;
 }
 
 .scrollLine {
@@ -167,11 +200,17 @@
 
 @keyframes hero-breathe {
   from {
-    transform: scale(1.04) translate3d(0, 0, 0);
+    transform: scale(1.03) translate3d(0, 0, 0);
   }
 
   to {
-    transform: scale(1.16) translate3d(-1.5%, -1%, 0);
+    transform: scale(1.1) translate3d(-0.6%, -0.3%, 0);
+  }
+}
+
+@media (max-width: 64rem) {
+  .coordinates {
+    opacity: 0.82;
   }
 }
 
@@ -182,16 +221,27 @@
     padding-top: 7rem;
   }
 
-  .backdrop {
+  .backdrop::before {
+    background-position: 50% bottom;
+    height: 39%;
+  }
+
+  .backdrop::after {
     background:
-      linear-gradient(
-        180deg,
-        rgb(12 12 10 / 14%) 0%,
-        rgb(12 12 10 / 36%) 45%,
-        rgb(12 12 10 / 94%) 100%
-      ),
-      radial-gradient(circle at 65% 22%, rgb(184 138 87 / 28%), transparent 32%),
-      linear-gradient(145deg, #4b4a3e 0%, #2d302a 45%, #181814 100%);
+      linear-gradient(180deg, #0d1112 0%, rgb(13 17 18 / 96%) 34%, rgb(13 17 18 / 68%) 60%, transparent 100%),
+      linear-gradient(90deg, rgb(5 7 7 / 36%) 0%, transparent 65%);
+  }
+
+  .coordinates {
+    font-size: 0.5rem;
+    gap: 0.25rem;
+    top: 7.4rem;
+  }
+
+  .north,
+  .compassLine,
+  .compassStar {
+    display: none;
   }
 
   .eyebrow {
@@ -235,6 +285,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .backdrop,
+  .coordinates,
   .eyebrow,
   .title,
   .tagline,
