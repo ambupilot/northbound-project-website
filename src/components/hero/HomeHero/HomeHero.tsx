@@ -8,6 +8,14 @@ export default function HomeHero() {
       <div className={styles.backdrop} aria-hidden="true" />
       <div className={styles.vignette} aria-hidden="true" />
 
+      <div className={styles.coordinates} aria-hidden="true">
+        <span className={styles.north}>N</span>
+        <span className={styles.compassLine} />
+        <span className={styles.compassStar}>✦</span>
+        <span>51.8426° N</span>
+        <span>5.8520° E</span>
+      </div>
+
       <div className={styles.content}>
         <p className={styles.eyebrow}>Open Road Records presents</p>
 
