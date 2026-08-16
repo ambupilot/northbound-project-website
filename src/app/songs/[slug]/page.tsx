@@ -36,6 +36,9 @@ export default async function SongPage({ params }: SongPageProps) {
 
   const { previous, next } = getAdjacentSongs(slug);
   const streamingLinks = song.streamingLinks.filter((link) => link.href);
+  const firstLyricSection = song.lyrics[0]?.split("\n") ?? [];
+  const lyricPreview =
+    firstLyricSection.length > 1 ? firstLyricSection.slice(1).join("\n") : song.lyricExcerpt;
 
   return (
     <main className={styles.page}>
@@ -50,20 +53,31 @@ export default async function SongPage({ params }: SongPageProps) {
               height={900}
               sizes="(max-width: 56rem) 88vw, 38vw"
             />
+            <span className={styles.coverTrack} aria-hidden="true">
+              {String(song.albumTrack).padStart(2, "0")}
+            </span>
           </div>
 
           <div className={styles.intro}>
-            <p className={styles.chapter}>Song {String(song.albumTrack).padStart(2, "0")}</p>
-            <p className={styles.album}>{northbound.title} · {song.year}</p>
+            <p className={styles.chapter}>Northbound. · Song {String(song.albumTrack).padStart(2, "0")}</p>
+            <p className={styles.album}>{northbound.releaseType} · {song.year}</p>
             <h1>{song.title}</h1>
             <p className={styles.description}>{song.description}</p>
             <blockquote>{song.lyricExcerpt}</blockquote>
+            <div className={styles.heroActions}>
+              <Link className={styles.primaryAction} href={`/lyrics/${song.slug}`}>
+                Read full lyrics
+              </Link>
+              <Link className={styles.secondaryAction} href="/music">
+                View the album
+              </Link>
+            </div>
           </div>
         </header>
 
         <section className={styles.story} aria-labelledby="story-title">
           <div className={styles.sectionLabel}>
-            <p>Behind the song</p>
+            <p>01 · Behind the song</p>
             <h2 id="story-title">Why this song exists.</h2>
           </div>
           <div className={styles.storyCopy}>
@@ -72,24 +86,43 @@ export default async function SongPage({ params }: SongPageProps) {
         </section>
 
         <section className={styles.details} aria-label="Song details">
-          <dl>
-            <div><dt>Mood</dt><dd>{song.mood}</dd></div>
-            <div><dt>Themes</dt><dd>{song.themes.join(" · ")}</dd></div>
-            <div><dt>Album</dt><dd><Link href="/music">{northbound.title}</Link></dd></div>
-            <div><dt>Label</dt><dd>{northbound.label}</dd></div>
-          </dl>
+          <div className={styles.detailIntro}>
+            <p className={styles.eyebrow}>02 · Character</p>
+            <h2>The shape of the song.</h2>
+          </div>
+          <div className={styles.detailContent}>
+            <div className={styles.moodBlock}>
+              <span>Mood</span>
+              <p>{song.mood}</p>
+            </div>
+            <div className={styles.themeBlock}>
+              <span>Themes</span>
+              <ul>
+                {song.themes.map((theme) => <li key={theme}>{theme}</li>)}
+              </ul>
+            </div>
+            <dl>
+              <div><dt>Album</dt><dd><Link href="/music">{northbound.title}</Link></dd></div>
+              <div><dt>Track</dt><dd>{String(song.albumTrack).padStart(2, "0")} of {northbound.trackCount}</dd></div>
+              <div><dt>Label</dt><dd>{northbound.label}</dd></div>
+              <div><dt>Year</dt><dd>{song.year}</dd></div>
+            </dl>
+          </div>
         </section>
 
         <section className={styles.lyricsPreview} aria-labelledby="lyrics-title">
-          <p className={styles.eyebrow}>Lyrics</p>
-          <h2 id="lyrics-title">Read the words.</h2>
-          <p>{song.lyricExcerpt}</p>
-          <Link href={`/lyrics/${song.slug}`}>Open full lyrics</Link>
+          <p className={styles.eyebrow}>03 · Lyrics</p>
+          <div className={styles.lyricsHeading}>
+            <h2 id="lyrics-title">The words.</h2>
+            <p>Read the complete lyric as it appears on the record.</p>
+          </div>
+          <blockquote>{lyricPreview}</blockquote>
+          <Link href={`/lyrics/${song.slug}`}>Read full lyrics <span aria-hidden="true">→</span></Link>
         </section>
 
         <section className={styles.credits} aria-labelledby="credits-title">
           <div>
-            <p className={styles.eyebrow}>Credits</p>
+            <p className={styles.eyebrow}>04 · Credits</p>
             <h2 id="credits-title">The record.</h2>
           </div>
           <dl>
@@ -100,30 +133,36 @@ export default async function SongPage({ params }: SongPageProps) {
         </section>
 
         <section className={styles.streaming} aria-labelledby="streaming-title">
-          <p className={styles.eyebrow}>Listen</p>
+          <p className={styles.eyebrow}>05 · Listen</p>
           <h2 id="streaming-title">Follow the song.</h2>
           {streamingLinks.length > 0 ? (
             <ul>
               {streamingLinks.map((link) => (
-                <li key={link.name}><a href={link.href ?? undefined}>{link.name}</a></li>
+                <li key={link.name}>
+                  <a href={link.href ?? undefined} target="_blank" rel="noreferrer">
+                    {link.name}
+                  </a>
+                </li>
               ))}
             </ul>
           ) : (
-            <p>Streaming links will be added when the official release becomes available.</p>
+            <p>Streaming links will appear here as soon as the official release is available.</p>
           )}
         </section>
 
         <nav className={styles.songNavigation} aria-label="Song navigation">
           {previous ? (
-            <Link href={`/songs/${previous.slug}`}>
-              <span>Previous song</span>
-              <strong>← {previous.title}</strong>
+            <Link className={styles.previousSong} href={`/songs/${previous.slug}`}>
+              <span>Previous · {String(previous.albumTrack).padStart(2, "0")}</span>
+              <strong>{previous.title}</strong>
+              <em aria-hidden="true">←</em>
             </Link>
           ) : <span />}
           {next ? (
-            <Link href={`/songs/${next.slug}`}>
-              <span>Next song</span>
-              <strong>{next.title} →</strong>
+            <Link className={styles.nextSong} href={`/songs/${next.slug}`}>
+              <span>Next · {String(next.albumTrack).padStart(2, "0")}</span>
+              <strong>{next.title}</strong>
+              <em aria-hidden="true">→</em>
             </Link>
           ) : <span />}
         </nav>
