@@ -1,14 +1,29 @@
+import { betweenTheFields } from "./between-the-fields";
+import { crossing } from "./crossing";
 import { energized } from "./energized";
 import { firstLight } from "./first-light";
+import { homebound } from "./homebound";
 import { ifTimeHadWaited } from "./if-time-had-waited";
 import { keeperOfTheLight } from "./keeper-of-the-light";
+import { northernLights } from "./northern-lights";
+import { oneMoreMile } from "./one-more-mile";
 import type { Song } from "./types";
+import { whereTheRiverSlows } from "./where-the-river-slows";
 
 export type { Song } from "./types";
 
-export const songs: Song[] = [firstLight, energized, keeperOfTheLight, ifTimeHadWaited].sort(
-  (a, b) => a.albumTrack - b.albumTrack,
-);
+export const songs: Song[] = [
+  firstLight,
+  homebound,
+  energized,
+  oneMoreMile,
+  crossing,
+  keeperOfTheLight,
+  betweenTheFields,
+  ifTimeHadWaited,
+  northernLights,
+  whereTheRiverSlows,
+].sort((a, b) => a.albumTrack - b.albumTrack);
 
 export const featuredSongs = songs
   .filter((song) => song.featuredOrder !== undefined)
