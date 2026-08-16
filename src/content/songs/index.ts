@@ -13,6 +13,7 @@ import { whereTheRiverSlows } from "./where-the-river-slows";
 export type { Song } from "./types";
 
 const albumWriter = "Martijn Kerssing";
+const albumProducer = "Northbound Project, Open Road Records";
 
 export const songs: Song[] = [
   firstLight,
@@ -31,6 +32,7 @@ export const songs: Song[] = [
     credits: {
       ...song.credits,
       writer: albumWriter,
+      producer: albumProducer,
     },
   }))
   .sort((a, b) => a.albumTrack - b.albumTrack);
