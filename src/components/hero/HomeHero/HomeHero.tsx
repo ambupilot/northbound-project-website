@@ -7,7 +7,7 @@ import styles from "./HomeHero.module.scss";
 export default function HomeHero() {
   return (
     <section className={styles.hero} aria-labelledby="home-hero-title">
-      <div className={styles.backdrop} aria-hidden="true">
+      <div className={styles.imageLayer} aria-hidden="true">
         <Image
           className={styles.heroImage}
           src="/images/hero/northbound-hero-cinematic.webp"
@@ -17,6 +17,7 @@ export default function HomeHero() {
           sizes="100vw"
         />
       </div>
+      <div className={styles.backdrop} aria-hidden="true" />
       <div className={styles.vignette} aria-hidden="true" />
 
       <div className={styles.coordinates} aria-hidden="true">
