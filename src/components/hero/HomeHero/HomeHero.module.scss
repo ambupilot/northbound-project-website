@@ -10,45 +10,34 @@
 
 .backdrop {
   animation: hero-breathe 26s ease-in-out infinite alternate;
-  background:
-    radial-gradient(circle at 50% 54%, rgb(184 138 87 / 20%), transparent 25%),
-    linear-gradient(180deg, #0a0e10 0%, #111719 52%, #18140f 100%);
+  background: linear-gradient(180deg, #0a0e10 0%, #111719 52%, #18140f 100%);
   inset: -4%;
+  overflow: hidden;
   position: absolute;
   transform: scale(1.03);
   will-change: transform;
 }
 
-.backdrop::before,
+.heroImage {
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0.98;
+}
+
 .backdrop::after {
+  background:
+    linear-gradient(180deg, rgb(8 12 13 / 88%) 0%, rgb(10 14 15 / 64%) 24%, transparent 56%),
+    linear-gradient(90deg, rgb(5 7 7 / 34%) 0%, transparent 34%, transparent 68%, rgb(5 7 7 / 30%) 100%);
   content: "";
+  inset: 0;
   pointer-events: none;
   position: absolute;
 }
 
-.backdrop::before {
-  background-image: url("/images/hero/northbound-hero-cinematic.webp");
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  bottom: 0;
-  height: 48%;
-  left: 0;
-  opacity: 0.96;
-  right: 0;
-}
-
-.backdrop::after {
-  background:
-    linear-gradient(180deg, #0d1112 0%, rgb(13 17 18 / 92%) 20%, transparent 58%),
-    linear-gradient(90deg, rgb(6 8 8 / 40%) 0%, transparent 32%, transparent 68%, rgb(6 8 8 / 35%) 100%);
-  inset: 0;
-}
-
 .vignette {
   background:
-    radial-gradient(circle at 50% 48%, transparent 34%, rgb(5 7 7 / 42%) 100%),
-    linear-gradient(180deg, rgb(5 7 8 / 12%) 0%, transparent 55%, rgb(5 6 6 / 26%) 100%);
+    radial-gradient(circle at 50% 50%, transparent 38%, rgb(5 7 7 / 44%) 100%),
+    linear-gradient(180deg, rgb(5 7 8 / 10%) 0%, transparent 62%, rgb(5 6 6 / 22%) 100%);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -221,15 +210,14 @@
     padding-top: 7rem;
   }
 
-  .backdrop::before {
-    background-position: 50% bottom;
-    height: 39%;
+  .heroImage {
+    object-position: 50% bottom;
   }
 
   .backdrop::after {
     background:
-      linear-gradient(180deg, #0d1112 0%, rgb(13 17 18 / 96%) 34%, rgb(13 17 18 / 68%) 60%, transparent 100%),
-      linear-gradient(90deg, rgb(5 7 7 / 36%) 0%, transparent 65%);
+      linear-gradient(180deg, rgb(8 12 13 / 94%) 0%, rgb(10 14 15 / 76%) 34%, rgb(10 14 15 / 30%) 68%, transparent 100%),
+      linear-gradient(90deg, rgb(5 7 7 / 34%) 0%, transparent 72%);
   }
 
   .coordinates {
