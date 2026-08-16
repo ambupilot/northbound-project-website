@@ -12,6 +12,8 @@ type SongPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+const siteUrl = "https://northbound-project.com";
+
 export function generateStaticParams() {
   return songs.map((song) => ({ slug: song.slug }));
 }
@@ -22,9 +24,35 @@ export async function generateMetadata({ params }: SongPageProps): Promise<Metad
 
   if (!song) return {};
 
+  const canonicalPath = `/songs/${song.slug}`;
+
   return {
-    title: `${song.title} | Northbound Project`,
+    title: song.title,
     description: song.description,
+    alternates: {
+      canonical: canonicalPath,
+    },
+    openGraph: {
+      type: "music.song",
+      url: canonicalPath,
+      siteName: "Northbound Project",
+      title: `${song.title} | Northbound Project`,
+      description: song.description,
+      images: [
+        {
+          url: northbound.cover,
+          width: 1254,
+          height: 1254,
+          alt: northbound.coverAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${song.title} | Northbound Project`,
+      description: song.description,
+      images: [northbound.cover],
+    },
   };
 }
 
@@ -39,9 +67,74 @@ export default async function SongPage({ params }: SongPageProps) {
   const firstLyricSection = song.lyrics[0]?.split("\n") ?? [];
   const lyricPreview =
     firstLyricSection.length > 1 ? firstLyricSection.slice(1).join("\n") : song.lyricExcerpt;
+  const songUrl = `${siteUrl}/songs/${song.slug}`;
+  const albumUrl = `${siteUrl}/music`;
+  const coverUrl = `${siteUrl}${northbound.cover}`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "MusicRecording",
+    "@id": `${songUrl}#music-recording`,
+    url: songUrl,
+    name: song.title,
+    description: song.description,
+    image: coverUrl,
+    datePublished: northbound.releaseDateIso,
+    genre: northbound.genre,
+    position: song.albumTrack,
+    byArtist: {
+      "@type": "MusicGroup",
+      name: song.credits.artist,
+      url: siteUrl,
+    },
+    composer: {
+      "@type": "Person",
+      name: song.credits.writer,
+    },
+    producer: [
+      {
+        "@type": "MusicGroup",
+        name: "Northbound Project",
+      },
+      {
+        "@type": "Organization",
+        name: "Open Road Records",
+        url: "https://open-road-records.com",
+      },
+    ],
+    inAlbum: {
+      "@type": "MusicAlbum",
+      "@id": `${albumUrl}#music-album`,
+      url: albumUrl,
+      name: northbound.title,
+      image: coverUrl,
+      datePublished: northbound.releaseDateIso,
+      numTracks: northbound.trackCount,
+      genre: northbound.genre,
+      byArtist: {
+        "@type": "MusicGroup",
+        name: northbound.artist,
+        url: siteUrl,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: northbound.label,
+        url: "https://open-road-records.com",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": songUrl,
+    },
+  };
 
   return (
     <main className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <article>
         <header className={styles.hero}>
           <div className={styles.coverWrap}>
