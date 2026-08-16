@@ -178,7 +178,8 @@
 @media (max-width: 48rem) {
   .hero {
     align-items: flex-end;
-    padding-bottom: 10.5rem;
+    padding-bottom: 9rem;
+    padding-top: 7rem;
   }
 
   .backdrop {
@@ -193,21 +194,42 @@
       linear-gradient(145deg, #4b4a3e 0%, #2d302a 45%, #181814 100%);
   }
 
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.5rem;
+  }
+
   .title {
-    font-size: clamp(3.8rem, 20vw, 6.5rem);
+    font-size: clamp(3rem, 17vw, 5rem);
+    line-height: 0.82;
+    max-width: 100%;
+  }
+
+  .title span:first-child {
+    white-space: nowrap;
   }
 
   .title span:last-child {
-    margin-left: 0.16em;
+    margin-left: 0.12em;
   }
 
   .tagline {
-    max-width: 16rem;
+    font-size: clamp(1.15rem, 6vw, 1.6rem);
+    margin-top: 2rem;
+    max-width: 14rem;
   }
 
   .actions {
     align-items: flex-start;
     flex-direction: column;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 24rem) {
+  .title {
+    font-size: clamp(2.75rem, 15.5vw, 4.25rem);
   }
 }
 
