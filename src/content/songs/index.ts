@@ -12,9 +12,6 @@ import { whereTheRiverSlows } from "./where-the-river-slows";
 
 export type { Song } from "./types";
 
-const albumWriter = "Martijn Kerssing";
-const albumProducer = "Northbound Project, Open Road Records";
-
 export const songs: Song[] = [
   firstLight,
   homebound,
@@ -26,16 +23,7 @@ export const songs: Song[] = [
   ifTimeHadWaited,
   northernLights,
   whereTheRiverSlows,
-]
-  .map((song) => ({
-    ...song,
-    credits: {
-      ...song.credits,
-      writer: albumWriter,
-      producer: albumProducer,
-    },
-  }))
-  .sort((a, b) => a.albumTrack - b.albumTrack);
+].sort((a, b) => a.albumTrack - b.albumTrack);
 
 export const featuredSongs = songs
   .filter((song) => song.featuredOrder !== undefined)
