@@ -29,7 +29,7 @@ export const northbound: Album = {
     { trackNumber: 10, songSlug: "where-the-river-slows" },
   ],
   streamingPlatforms: [
-    { name: "Spotify", href: null },
+    { name: "Spotify", href: "https://open.spotify.com/album/4TE30lkkdfIx5by8yqRAgl" },
     { name: "Apple Music", href: null },
     { name: "YouTube Music", href: null },
     { name: "Amazon Music", href: null },
