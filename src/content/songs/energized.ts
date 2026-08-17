@@ -94,5 +94,7 @@ Only silence knows…`,
     writer: "Martijn Kerssing",
     producer: "Northbound Project, Open Road Records",
   },
-  streamingLinks: [],
+  streamingLinks: [
+    { name: "Spotify", href: "https://open.spotify.com/track/6N6M9j3kbf6wlb0mNkAQ2z" },
+  ],
 };
