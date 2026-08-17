@@ -13,6 +13,7 @@ type SongPageProps = {
 };
 
 const siteUrl = "https://northbound-project.com";
+const spotifyArtistUrl = "https://open.spotify.com/artist/3chBK0d2JV4bGVAZo0RvQ2";
 
 export function generateStaticParams() {
   return songs.map((song) => ({ slug: song.slug }));
@@ -64,6 +65,10 @@ export default async function SongPage({ params }: SongPageProps) {
 
   const { previous, next } = getAdjacentSongs(slug);
   const streamingLinks = song.streamingLinks.filter((link) => link.href);
+  const songSameAs = streamingLinks.map((link) => link.href).filter((href): href is string => Boolean(href));
+  const albumSameAs = northbound.streamingPlatforms
+    .map((platform) => platform.href)
+    .filter((href): href is string => Boolean(href));
   const firstLyricSection = song.lyrics[0]?.split("\n") ?? [];
   const lyricPreview =
     firstLyricSection.length > 1 ? firstLyricSection.slice(1).join("\n") : song.lyricExcerpt;
@@ -81,10 +86,12 @@ export default async function SongPage({ params }: SongPageProps) {
     datePublished: northbound.releaseDateIso,
     genre: northbound.genre,
     position: song.albumTrack,
+    ...(songSameAs.length > 0 ? { sameAs: songSameAs } : {}),
     byArtist: {
       "@type": "MusicGroup",
       name: song.credits.artist,
       url: siteUrl,
+      sameAs: [spotifyArtistUrl],
     },
     composer: {
       "@type": "Person",
@@ -94,6 +101,8 @@ export default async function SongPage({ params }: SongPageProps) {
       {
         "@type": "MusicGroup",
         name: "Northbound Project",
+        url: siteUrl,
+        sameAs: [spotifyArtistUrl],
       },
       {
         "@type": "Organization",
@@ -110,10 +119,12 @@ export default async function SongPage({ params }: SongPageProps) {
       datePublished: northbound.releaseDateIso,
       numTracks: northbound.trackCount,
       genre: northbound.genre,
+      ...(albumSameAs.length > 0 ? { sameAs: albumSameAs } : {}),
       byArtist: {
         "@type": "MusicGroup",
         name: northbound.artist,
         url: siteUrl,
+        sameAs: [spotifyArtistUrl],
       },
       publisher: {
         "@type": "Organization",
